@@ -1,0 +1,61 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdir,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+import manifest from '../contracts/plugin-manifest.json' with {type:'json'};
+import {scenario,original,base,selection,sha} from './support/scenario.ts';
+import {clone} from '../src/domain/model.ts';
+import {start} from './support/machine.ts';
+import {importText} from './support/import.ts';
+import {blueprint} from './support/creative.ts';
+const error=(r:any)=>r.error?.code??r.data?.result?.error?.code;
+test('正式CLI/MCP全动作、来源、估算、返工与热插拔',{timeout:1200000},async t=>{
+ const c=await start();let serial=0;const key=()=>`production-${++serial}`;
+ try{
+  t.diagnostic(c.directory);assert.equal(c.cap.access_mode,'open');
+  for(const resource of [undefined,'references/operations.md','references/workflows.md'])assert.ok((await c.invoke('skills.read',{skill_id:'production-planner',...(resource?{resource}:{})})).content.length>100);
+  const originals=await importText(c,[original,original.replace('撑伞等候','提灯等候')]),refs=[originals[0]];const fixedSource=await c.ok('hetu_get_document',{management_ref:c.management,document_id:refs[0].document_id,revision_id:refs[0].revision_id}),p=scenario(c.work,fixedSource.content);
+  const bp=await blueprint(c);refs.push(bp);p.requirements[0].entity_ref='character_11111111-1111-4111-8111-111111111111';p.requirements[0].entity_source_index=1;
+  let r=await c.invoke('save_project',{content:p,source_refs:refs,expected_revision:0,expected_sha256:'',operation_key:'seed'});const initial=r;
+  const parsed=await c.invoke('preview_breakdown',{...selection(r),source_index:0});assert.equal(parsed.recognized_scenes,2);
+  assert.equal((await c.invoke('get_source',{...selection(r),source_index:0})).source.content,fixedSource.content);
+  assert.equal((await c.invoke('requirements_matrix',selection(r))).resources.find((v:any)=>v.id==='key').appearances.length,2);
+  const plan=await c.invoke('calculate_plan',selection(r));assert.equal(plan.known_minutes,90);assert.equal(plan.total_cost_minor,null);assert.equal(plan.blocks[1].over_capacity,true);
+  const dg=await c.invoke('scene_digest',{...selection(r),scene_id:'harbour-1'});
+  r=await c.invoke('put_note',{...base(r,key()),note:{id:'focus',scene_id:'harbour-1',scene_sha256:dg.scene_sha256,comment:'先保留钥匙的疑问，服装不要抢过动作。',status:'open',resolution:''}});
+  assert.deepEqual((await c.invoke('check_production',selection(r))).stale_note_ids,[]);
+  const edit={...r.object.content.requirements[1],notes:'雨夜外套改用更简单轮廓。'};
+  r=await c.invoke('put_requirement',{...base(r,key()),requirement:edit});assert.deepEqual((await c.invoke('check_production',selection(r))).stale_note_ids,['focus']);
+  assert.equal((await c.invoke('scene_sheet',{...selection(r),scene_id:'harbour-1'})).scene.ranges[0].quote,p.scenes[0].ranges[0].quote);
+  for(const department of ['art','stage','video'])assert.equal((await c.invoke('department_handoff',{...selection(r),department,scene_ids:['harbour-1']})).basis_ref.sha256,r.sha256);
+  refs.push(originals[1]);
+  r=await c.invoke('save_project',{...base(r,key()),content:r.object.content,source_refs:refs});
+  const impact=await c.invoke('preview_source_change',{...selection(r),from_source_index:0,to_source_index:2});assert.ok(impact.scenes_to_recheck.some((v:any)=>v.id==='harbour-2'));
+  for(const item of ['scene','requirement','usage','task','block','note']){const field=({scene:'scenes',requirement:'requirements',usage:'usages',task:'tasks',block:'blocks',note:'notes'} as any)[item];for(const row of [...r.object.content[field]])r=await c.invoke('put_'+item,{...base(r,key()),[item]:row});}
+  let imported=await c.invoke('save_project',{content:{...p,title:'独立拆场',scenes:[],requirements:[],usages:[],tasks:[],blocks:[],notes:[]},source_refs:refs,expected_revision:0,expected_sha256:'',operation_key:key()});
+  imported=await c.invoke('import_scenes',{...base(imported,key()),source_index:0,id_prefix:'imported'});assert.equal(imported.object.content.scenes.length,2);
+  assert.equal((await c.invoke('list_projects',{query:'雨港'})).objects.length,1);
+  const editInput={...base(r,key()),content:{...r.object.content,title:'雨港来信 第二版'}};r=await c.invoke('save_project',editInput);assert.equal((await c.invoke('save_project',editInput)).sha256,r.sha256);
+  assert.equal(error(await c.raw('save_project',{...editInput,content:{...editInput.content,title:'异参'}})),'idempotency_conflict');
+  assert.equal(error(await c.raw('save_project',{...editInput,operation_key:key()})),'revision_conflict');assert.equal((await c.invoke('get_operation',{operation_key:editInput.operation_key})).sha256,r.sha256);
+  r=await c.invoke('save_project',{...base(r,key()),content:{...r.object.content,basis_refs:[{owner_plugin_id:manifest.id,object_id:initial.object.object_id,revision:initial.object.revision,sha256:initial.sha256}]}});
+  assert.equal((await c.invoke('get_basis',{...selection(r),basis_index:0})).basis.sha256,initial.sha256);
+  await c.invoke('build_context',{...selection(r),goal:'按准备缺口继续创作',max_chars:12000});await c.invoke('create_handoff',{...selection(r),goal:'接续美术和动作候选'});
+  await c.invoke('compare_versions',{object_id:r.object.object_id,from_revision:initial.object.revision,to_revision:r.object.revision});
+  for(const format of ['json','markdown','html'])assert.ok((await c.invoke('export_project',{...selection(r),format,max_bytes:48000})).total_bytes>100);
+  let offset=0,total:number|undefined,digest:string|undefined;const chunks:Buffer[]=[];
+  do{const v=await c.invoke('export_preparation',{...selection(r),offset,max_bytes:4096}),b=Buffer.from(v.base64,'base64');assert.equal(v.offset,offset);assert.equal(sha(b),v.chunk_sha256);total??=v.total_bytes;digest??=v.sha256;assert.equal(v.sha256,digest);chunks.push(b);if(v.next_offset===null)break;assert.equal(v.next_offset,offset+b.length);offset=v.next_offset;}while(offset<2000000);
+  const bytes=Buffer.concat(chunks);assert.equal(bytes.length,total);assert.equal(sha(bytes),digest);assert.match(bytes.toString(),/守站人撑伞等候/);
+  const fixed=selection(r),fixedSHA=r.sha256;assert.equal(c.cli('hetu.plugins.invoke',{...c.binding,capabilities_sha256:c.cap.capabilities_sha256,action:'get_project',arguments:fixed}).status,'succeeded');
+  let scratch=clone(p);scratch.title='移除用例';scratch.notes=[{id:'scratch-note',scene_id:'harbour-1',scene_sha256:'a'.repeat(64),comment:'移除意见测试',status:'open',resolution:''}];scratch.tasks[1].depends_on=[];scratch.tasks[2].depends_on=[];
+  let removal=await c.invoke('save_project',{content:scratch,source_refs:refs,expected_revision:0,expected_sha256:'',operation_key:key()});
+  for(const [item,field] of [['note','notes'],['block','blocks'],['task','tasks'],['usage','usages'],['requirement','requirements'],['scene','scenes']])for(const row of [...removal.object.content[field]].reverse())removal=await c.invoke('remove_'+item,{...base(removal,key()),[item+'_id']:row.id});
+  // 空意见也覆盖移除动作，避免声明了动作但未实际调用。
+  assert.ok(c.actions.has('remove_note'));
+  await c.apply('disable');assert.ok(error(await c.raw('get_project',fixed)));await c.apply('enable');await c.discover();assert.equal((await c.invoke('get_project',fixed)).sha256,fixedSHA);
+  await c.apply('uninstall');assert.ok(error(await c.raw('get_project',fixed)));await c.apply('install');await c.discover();assert.equal((await c.invoke('get_project',fixed)).sha256,fixedSHA);
+  assert.deepEqual(manifest.contributions.actions.map(a=>a.id).filter(id=>!c.actions.has(id)),[]);
+  const dir=process.env.HETU_RECEIPT_DIRECTORY??'docs/research';await mkdir(dir,{recursive:true});await writeFile(path.join(dir,'制片筹备包.html'),bytes);
+  await writeFile(path.join(dir,'runtime-acceptance.json'),JSON.stringify({recorded_at:new Date().toISOString(),plugin_id:manifest.id,package_sha256:c.pkg.package_sha256,host_version:c.coreVersion,platform:process.platform,architecture:process.arch,actions:[...c.actions],fixed_source:true,entity_verified:true,unknown_estimates_preserved:true,CAS:true,original_key_recovery:true,lifecycle:['install','disable','enable','uninstall','install'],limits:['隔离样本，不是现场制作或费用认可','未执行付费生成、外发、采纳或定稿']},null,2)+'\n');
+ }finally{await c.client.close();}
+});

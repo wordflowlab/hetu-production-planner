@@ -1,0 +1,47 @@
+{
+  "retrieved_at": "2026-11-18T23:33:40.542756+00:00",
+  "records": [
+    {
+      "repository": "https://github.com/trelby/trelby",
+      "commit": "ded2305b7e2938fbcfc9a245c6f00947d8edc509",
+      "cloned_to": "/Users/coso/Documents/dev/ai/limecloud/hetu-gh-release/output/plugin-production/research/trelby",
+      "license_boundary": "GPL-2.0，仅对照专业报告分层，不复制代码",
+      "copied_code": false,
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "df84246204e3c54cd24aebbc23714235f5fc41d754d53b65444a2afbf070130f"
+        },
+        {
+          "path": "trelby/scenereport.py",
+          "sha256": "63bf069eb5655c0745cb87ccf685be434708a273589d7e20fe95dca8c068e9ae"
+        },
+        {
+          "path": "trelby/locationreport.py",
+          "sha256": "4a8adcff2ac6314957f0831b54b11f5107b9a6fc2d87c332ad331266401165ef"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/nyousefi/Fountain",
+      "commit": "c09b65e9d4bf6cb1c672501f793b9b3f2becd452",
+      "cloned_to": "/Users/coso/Documents/dev/ai/limecloud/hetu-gh-release/output/plugin-production/research/fountain",
+      "license_boundary": "MIT，仅研究场景标题格式；独立实现有界标题拆解",
+      "copied_code": false,
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256": "5a436b998abb7e9e8d138f558d8f62079954cd7f1ffab9897ff8e161ee3d1e0a"
+        },
+        {
+          "path": "Fountain/FountainParser.m",
+          "sha256": "24becd0a289d7f6c2b7beff78d39f5c8db61bc75d36b86a058873403722be54f"
+        },
+        {
+          "path": "FountainTests/SceneHeaderTests.m",
+          "sha256": "37a0b4521d7fa81f998213641c44beb762684ab823cc9a29024828c61f884833"
+        }
+      ]
+    }
+  ]
+}

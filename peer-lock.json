@@ -1,0 +1,26 @@
+{
+  "scope": "仅联合验收，不是运行时依赖",
+  "peers": [
+    {
+      "slug": "art-direction",
+      "version": "0.1.0",
+      "package_sha256": "54f05a084e642455f90defc9a2fc8da9c71b9d4204e8f51b176843d5f3673682",
+      "archive_sha256": "3deb17b09640d4ab8ac3557294c68f6137fadbecdfc0fd1b877e02cbef171db9",
+      "source_commit": "74b768a18e05cda4885ce409003cf01b477c6312"
+    },
+    {
+      "slug": "director-stage",
+      "version": "0.2.0",
+      "package_sha256": "3a2c3cebd17854981fd40a95f3bd68558a33305444c4f2fcdca2c0bfcdb1fc66",
+      "archive_sha256": "7a6a8c8f45a3f8398adcf85cca9112e39ee3f9f7dc982d87b69c507c8b032aaa",
+      "source_commit": "03eab799a426dbc0883dd59c9c56ce5ee03affeb"
+    },
+    {
+      "slug": "video-studio",
+      "version": "0.1.0",
+      "package_sha256": "ef99e6eb1767342f4c1994a0b9ed1b3c684dd8c25f513e7e4ea7db2add5d32f5",
+      "archive_sha256": "e7e792767e2eb4d13e3fe7e78c422673693ef83cb6cbccee1ee6ce60f13aec7b",
+      "source_commit": "448ac7ff3a71ddfc91f9aa9664f6d26ec483c41c"
+    }
+  ]
+}

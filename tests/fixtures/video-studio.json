@@ -1,0 +1,60 @@
+{
+  "format_version": 1,
+  "title": "雨港两场视听准备",
+  "form": "short",
+  "constraints": "",
+  "nodes": [
+    {
+      "id": "work",
+      "kind": "work",
+      "parent_id": null,
+      "title": "雨港两场视听准备",
+      "summary": "",
+      "detail": "",
+      "goal": "",
+      "conflict": "",
+      "turn": "",
+      "start_state": "",
+      "end_state": "",
+      "archived": false,
+      "formal_episode_id": null,
+      "source_indices": [],
+      "camera": "",
+      "action": "",
+      "sound": "",
+      "estimated_duration_ms": 0,
+      "asset_ids": []
+    },
+    {
+      "id": "first",
+      "kind": "scene",
+      "parent_id": "work",
+      "title": "雨港邮局",
+      "summary": "林溪拆信找到钥匙",
+      "detail": "",
+      "goal": "",
+      "conflict": "",
+      "turn": "",
+      "start_state": "",
+      "end_state": "",
+      "archived": false,
+      "formal_episode_id": null,
+      "source_indices": [
+        0
+      ],
+      "camera": "",
+      "action": "保留交钥匙前的疑问",
+      "sound": "雨声不遮对白",
+      "estimated_duration_ms": 6000,
+      "asset_ids": []
+    }
+  ],
+  "coverage": [],
+  "activity": [],
+  "assets": [],
+  "takes": [],
+  "edits": [],
+  "feedback": [],
+  "reworks": [],
+  "delivery": []
+}

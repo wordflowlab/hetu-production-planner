@@ -1,0 +1,106 @@
+{
+  "format_version": 1,
+  "title": "雨港邮局 钥匙",
+  "description": "",
+  "objects": [
+    {
+      "id": "lin",
+      "name": "林溪",
+      "preset": "person-standing",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "visible": true,
+      "locked": false,
+      "source_index": 0
+    },
+    {
+      "id": "table",
+      "name": "旧桌",
+      "preset": "table",
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "visible": true,
+      "locked": false,
+      "source_index": null
+    }
+  ],
+  "cameras": [
+    {
+      "id": "camera-1",
+      "name": "机位 1",
+      "position": [
+        7,
+        5,
+        9
+      ],
+      "target": [
+        0,
+        1,
+        0
+      ],
+      "focal_length_mm": 40,
+      "sensor_width_mm": 36,
+      "near": 0.05,
+      "far": 500
+    }
+  ],
+  "environment": {
+    "ground": true,
+    "shadows": true,
+    "grid": true,
+    "white_model": true,
+    "background": "studio",
+    "sun_azimuth": 40,
+    "sun_elevation": 45
+  },
+  "timeline": {
+    "fps": 25,
+    "duration_frames": 150
+  },
+  "tracks": [],
+  "shots": [
+    {
+      "id": "opening",
+      "label": "拆信",
+      "camera_id": "camera-1",
+      "start": 0,
+      "end": 150,
+      "dialogue": {
+        "speaker_id": "lin",
+        "text": "谁留下了它？",
+        "source_index": 0
+      }
+    }
+  ],
+  "notes": []
+}
