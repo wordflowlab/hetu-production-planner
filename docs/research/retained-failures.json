@@ -20,6 +20,16 @@
       "stage": "cross assertion",
       "observation": "引用已改resource后测试仍断言source.content，实际是source.resource.body",
       "resolution": "仅修正测试路径，公开包再验收"
+    },
+    {
+      "stage": "public cross environment",
+      "observation": "隔离工作树被外部清理，运行中的宿主和manager路径消失，回读失败",
+      "resolution": "恢复同SHA正式归档到独立命名工作树并锁定；先重新核验签名和随包摘要，再复验。未改业务校验或换操作键掩盖未知。"
+    },
+    {
+      "stage": "CI independent drama",
+      "observation": "独立剧本候选证据误作正式document来源，Core按作品归属拒绝；视频到三个专业成果、改稿及候选已通过",
+      "resolution": "以该剧本自身resource_organize任务保存固定Fountain资料，候选单独保留；独立剧本拆为独立验收，不放宽Core。"
     }
   ]
 }

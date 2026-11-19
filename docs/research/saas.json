@@ -8,5 +8,45 @@
     "url": "https://yamdu.com/en/features/script-breakdown/",
     "error": "HTTP Error 404: Not Found",
     "scope": "未取得，不作为能力事实"
+  },
+  {
+    "url": "https://yamdu.com/en/",
+    "status": 200,
+    "title": "The Production Management Software for Films and Media",
+    "sha256": "ed5a7b1e7c770a25a78f1a29f92ec8e10c0e55b261b90651d7480f61be187778",
+    "scope": "仅公开产品说明，不是登录后业务实测",
+    "observed_terms": [
+      "Budget",
+      "Call Sheet",
+      "Production Management",
+      "Production management",
+      "Scheduling",
+      "Script Breakdown",
+      "budget",
+      "call sheet",
+      "production management",
+      "scheduling",
+      "script breakdown"
+    ]
+  },
+  {
+    "url": "https://www.studiobinder.com/script-breakdown-software/",
+    "status": 200,
+    "title": "StudioBinder: Modern Script Breakdown Software for Film &amp; TV",
+    "sha256": "5316126de94f47972f220490f6b24f4693e43bf605406da4f41a594a5f571b5f",
+    "scope": "仅公开产品说明，不是登录后业务实测",
+    "observed_terms": [
+      "Budget",
+      "Call Sheet",
+      "Call sheet",
+      "Production Management",
+      "Scheduling",
+      "Script Breakdown",
+      "budget",
+      "call sheet",
+      "production management",
+      "scheduling",
+      "script breakdown"
+    ]
   }
 ]

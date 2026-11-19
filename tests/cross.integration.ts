@@ -37,7 +37,20 @@ test('独立视频固定脚本到美术、导演和视听，改稿复核与候�
   const p2={...production.object.content.scenes[1],synopsis:'新稿改为提灯等候，先复核妆造与光源。'};production=await c.invoke('put_scene',{...base(production,'cross-scene-note'),scene:p2});await candidate(c,'INT. 雨港邮局 - NIGHT\n\n林溪拿起钥匙。窗外的雨声渐弱。\n\nEXT. 旧站门外 - DAWN\n\n守站人提灯等候。\n','cross-following-candidate','outline','outline');
   assert.equal((await c.ok('hetu_read_work',{management_ref:c.management,work_ref:c.work})).sha256,originalHead.sha256);assert.equal((await c.invoke('get_source',{...selection(production),source_index:0})).source.resource.body,original);
   stages.push('新固定脚本先预览影响，复读第二场再准备后续候选，原作品正文保持');
-  const drama=await start('drama');try{const d=await candidate(drama,original,'drama-script','drama_draft','text','fountain'),dp=scenario(drama.work,d.draft.content);const saved=await drama.invoke('save_project',{content:dp,source_refs:[d.source_ref],expected_revision:0,expected_sha256:'',operation_key:'drama-production'});assert.equal(saved.object.work_ref.kind,'drama');assert.notEqual((await drama.call('hetu_read_work',{management_ref:c.management,work_ref:drama.work})).status,'succeeded');stages.push('独立剧本以自身Fountain候选和管理引用完整保存，跨作品错误引用拒绝');}finally{await drama.client.close();}
   const dir=process.env.HETU_RECEIPT_DIRECTORY??'docs/research';await mkdir(dir,{recursive:true});await writeFile(path.join(dir,'cross-acceptance.json'),JSON.stringify({recorded_at:new Date().toISOString(),host_version:c.coreVersion,package_sha256:c.pkg.package_sha256,peers,stages,downstream_fixed_results:peerResults,original_sha256:originalHead.sha256,adopted:false,finalized:false,limits:['专业工程接续不等于真实拍摄、图像生成或成片认可','未执行付费生成、外部发送、采纳或定稿']},null,2)+'\n');t.diagnostic(c.directory);
  }finally{await c.client.close();}
+});
+
+
+test('独立剧本固定资料、候选与错误管理引用拒绝',{timeout:600000},async t=>{
+ const drama=await start('drama');try{
+  await candidate(drama,original,'drama-script','drama_draft','text','fountain');
+  const d=await fixedScript(drama,original,'drama-fixed-script'),dp=scenario(drama.work,d.content);
+  const saved=await drama.invoke('save_project',{content:dp,source_refs:[d.source_ref],expected_revision:0,expected_sha256:'',operation_key:'drama-production'});
+  assert.equal(saved.object.work_ref.kind,'drama');assert.equal((await drama.invoke('get_source',{...selection(saved),source_index:0})).source.resource.body,original);
+  const wrong={...drama.binding,work_ref:{...drama.work,object_id:'drama_missing'}};
+  assert.notEqual((await drama.call('hetu_plugins_capabilities',wrong)).status,'succeeded');
+  const dir=process.env.HETU_RECEIPT_DIRECTORY??'docs/research';await mkdir(dir,{recursive:true});
+  await writeFile(path.join(dir,'cross-drama-acceptance.json'),JSON.stringify({recorded_at:new Date().toISOString(),host_version:drama.coreVersion,package_sha256:drama.pkg.package_sha256,work_ref:drama.work,project_ref:{object_id:saved.object.object_id,revision:saved.object.revision,sha256:saved.sha256},fixed_resource:true,independent_candidate:true,wrong_work_rejected:true,adopted:false,finalized:false},null,2)+'\n');t.diagnostic(drama.directory);
+ }finally{await drama.client.close();}
 });
