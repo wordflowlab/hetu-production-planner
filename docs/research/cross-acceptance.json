@@ -1,0 +1,61 @@
+{
+  "recorded_at": "2026-11-19T00:28:24.471Z",
+  "host_version": "hetu 0.12.4",
+  "package_sha256": "892e50ccb90398d5b67214bcb961c8dea70d335bf87b7b7112848cba0474540e",
+  "peers": [
+    {
+      "slug": "art-direction",
+      "version": "0.1.0",
+      "package_sha256": "54f05a084e642455f90defc9a2fc8da9c71b9d4204e8f51b176843d5f3673682",
+      "archive_sha256": "3deb17b09640d4ab8ac3557294c68f6137fadbecdfc0fd1b877e02cbef171db9",
+      "source_commit": "74b768a18e05cda4885ce409003cf01b477c6312"
+    },
+    {
+      "slug": "director-stage",
+      "version": "0.2.1",
+      "package_sha256": "bf0544d37b1bc9c67cd0a93fa0297a720e7a46fc73dcb21596885e62cac0a8c6",
+      "archive_sha256": "43153a24597604fb70391f907a324bfdf2a8fd97ff8c426e7b207610793f6737",
+      "source_commit": "23bfaaeeb97d360863e7ff1859556e722f515741"
+    },
+    {
+      "slug": "video-studio",
+      "version": "0.1.0",
+      "package_sha256": "ef99e6eb1767342f4c1994a0b9ed1b3c684dd8c25f513e7e4ea7db2add5d32f5",
+      "archive_sha256": "e7e792767e2eb4d13e3fe7e78c422673693ef83cb6cbccee1ee6ce60f13aec7b",
+      "source_commit": "448ac7ff3a71ddfc91f9aa9664f6d26ec483c41c"
+    }
+  ],
+  "stages": [
+    "独立视频建立固定脚本参考稿，回读实际字节后拆解制作需求",
+    "美术设定台接收固定筹备依据并保存服装和道具要求，不伪造图像",
+    "导演布景台保存人物、旧桌和带固定脚本来源的镜头，回读真实专业工程",
+    "视听制作接收两场动作与声音要求；筹备新修订固定回读三个下游成果",
+    "新固定脚本先预览影响，复读第二场再准备后续候选，原作品正文保持"
+  ],
+  "downstream_fixed_results": [
+    {
+      "owner_plugin_id": "org.wordflowlab.art-direction",
+      "object_id": "ext_e68e717a-fdcb-4e27-a05c-9885b8abeb1a",
+      "revision": 1,
+      "sha256": "57798a9ad234589c62ad4231c3e7ce9375256f80aea6fbfaf42804904486b088"
+    },
+    {
+      "owner_plugin_id": "org.wordflowlab.director-stage",
+      "object_id": "ext_8b017195-9531-4671-9dea-20f706e37197",
+      "revision": 1,
+      "sha256": "2ffe18dee4bb0296270691d27073c3885ba7843c52c3e64b1aa257bc3e84392b"
+    },
+    {
+      "owner_plugin_id": "org.wordflowlab.video-studio",
+      "object_id": "ext_64cb825d-a041-4687-89b1-b00719fc6140",
+      "revision": 1,
+      "sha256": "be1b95dc74ba12995ba02c350774aa836f1510ebaaf9d62d6fe5cda21e04bdec"
+    }
+  ],
+  "adopted": false,
+  "finalized": false,
+  "limits": [
+    "专业工程接续不等于真实拍摄、图像生成或成片认可",
+    "未执行付费生成、外部发送、采纳或定稿"
+  ]
+}

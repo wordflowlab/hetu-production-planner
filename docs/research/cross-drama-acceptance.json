@@ -1,0 +1,20 @@
+{
+  "recorded_at": "2026-11-19T00:28:49.729Z",
+  "host_version": "hetu 0.12.4",
+  "package_sha256": "892e50ccb90398d5b67214bcb961c8dea70d335bf87b7b7112848cba0474540e",
+  "work_ref": {
+    "workspace_id": "workspace_368e7d2d-75aa-4a5f-9b78-d02d21dd15e2",
+    "kind": "drama",
+    "object_id": "drama_1659edf5-da69-4959-a02c-a6fcd12ff850"
+  },
+  "project_ref": {
+    "object_id": "ext_aebc22a0-2adf-41dc-ac3c-927e56448f10",
+    "revision": 1,
+    "sha256": "7caa3451fb4adfae7d16c11b6d2dca880c50d5a70520468859f3947c7c2b9185"
+  },
+  "fixed_resource": true,
+  "independent_candidate": true,
+  "wrong_work_rejected": true,
+  "adopted": false,
+  "finalized": false
+}

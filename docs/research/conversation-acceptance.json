@@ -323,5 +323,11 @@
     "chunks": 1,
     "verified": true
   },
-  "existing_plugin_choices_preserved": 27
+  "existing_plugin_choices_preserved": 27,
+  "director_patch_install": {
+    "version": "0.2.1",
+    "package_sha256": "bf0544d37b1bc9c67cd0a93fa0297a720e7a46fc73dcb21596885e62cac0a8c6",
+    "source": "公开Release重新下载核验",
+    "existing_plugin_choices_preserved": 27
+  }
 }
