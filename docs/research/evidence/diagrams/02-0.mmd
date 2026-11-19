@@ -1,0 +1,9 @@
+erDiagram
+    WORK ||--o{ PROJECT : contains
+    PROJECT ||--o{ SCENE : organizes
+    SCENE ||--o{ USAGE : requires
+    REQUIREMENT ||--o{ USAGE : supplies
+    TASK }o--o{ REQUIREMENT : prepares
+    TASK }o--o{ TASK : depends_on
+    BLOCK ||--o{ TASK : sequences
+    SCENE ||--o{ NOTE : reviews

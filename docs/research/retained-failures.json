@@ -1,0 +1,25 @@
+{
+  "recorded_at": "2026-11-19",
+  "failures": [
+    {
+      "stage": "source import",
+      "observation": "TXT导入转为Markdown后标题有转义，原文件字节坐标与固定文稿不同，Core拒绝引文",
+      "resolution": "公开documents.get回读实际字节后解析；增加转义标题用例，保留原字节引文"
+    },
+    {
+      "stage": "independent video",
+      "observation": "将视频参考稿误作document来源，Core拒绝归属",
+      "resolution": "使用resource_organize任务保存同作品固定脚本资料，未降低Core校验"
+    },
+    {
+      "stage": "director v0.2.0",
+      "observation": "旧包来源Schema缺resource，保存被拒绝",
+      "resolution": "由导演插件Owner补齐SDK和清单，发布v0.2.1；来源归属和摘要仍由Core核验"
+    },
+    {
+      "stage": "cross assertion",
+      "observation": "引用已改resource后测试仍断言source.content，实际是source.resource.body",
+      "resolution": "仅修正测试路径，公开包再验收"
+    }
+  ]
+}

@@ -1,0 +1,327 @@
+{
+  "recorded_at": "2026-11-19T00:05:32.078Z",
+  "client": "当前Codex会话既有稳定MCP",
+  "host_version": "0.12.3",
+  "plugin_id": "org.wordflowlab.production-planner",
+  "package_sha256": "892e50ccb90398d5b67214bcb961c8dea70d335bf87b7b7112848cba0474540e",
+  "skill_read": [
+    "SKILL.md",
+    "references/workflows.md",
+    "references/operations.md"
+  ],
+  "work_ref": {
+    "workspace_id": "workspace_01abb9b1-8e4a-46ac-a8ee-82d200f35875",
+    "kind": "novel",
+    "object_id": "novel_c070a2bc-10f4-4b55-a61b-981caa46f1ac"
+  },
+  "original": {
+    "object_id": "ext_2c6a277e-7f44-423e-8254-922c66e94ea0",
+    "revision": 1,
+    "sha256": "7bb8b5df2b9e89efbd6b34e1f6b5a7d1aab29b566765e1d7440519f0d1ca877f"
+  },
+  "refined": {
+    "object_id": "ext_2c6a277e-7f44-423e-8254-922c66e94ea0",
+    "revision": 2,
+    "sha256": "4c9e397fcf307504f2e86fe4bc217fd5688dca0238340aca7c6c9cd27d212bb6"
+  },
+  "plan": {
+    "blocks": [
+      {
+        "capacity_minutes": 45,
+        "id": "first",
+        "known_cost_minor": 10000,
+        "known_minutes": 30,
+        "order": 1,
+        "over_capacity": false,
+        "tasks": [
+          {
+            "id": "design",
+            "title": "准备外套与钥匙方案"
+          }
+        ],
+        "title": "美术准备",
+        "total_cost_minor": 10000,
+        "total_minutes": 30,
+        "unknown_cost": [],
+        "unknown_minutes": []
+      },
+      {
+        "capacity_minutes": 75,
+        "id": "second",
+        "known_cost_minor": 5000,
+        "known_minutes": 60,
+        "order": 2,
+        "over_capacity": false,
+        "tasks": [
+          {
+            "id": "stage",
+            "title": "核对邮局走位与交钥匙动作"
+          }
+        ],
+        "title": "动作核对",
+        "total_cost_minor": 5000,
+        "total_minutes": 60,
+        "unknown_cost": [],
+        "unknown_minutes": []
+      },
+      {
+        "capacity_minutes": null,
+        "id": "third",
+        "known_cost_minor": 0,
+        "known_minutes": 0,
+        "order": 3,
+        "over_capacity": null,
+        "tasks": [
+          {
+            "id": "video",
+            "title": "准备两场的视听候选"
+          }
+        ],
+        "title": "视听候选准备",
+        "total_cost_minor": null,
+        "total_minutes": null,
+        "unknown_cost": [
+          {
+            "id": "video",
+            "title": "准备两场的视听候选"
+          }
+        ],
+        "unknown_minutes": [
+          {
+            "id": "video",
+            "title": "准备两场的视听候选"
+          }
+        ]
+      }
+    ],
+    "currency": "CNY",
+    "currency_unit": "minor",
+    "dependency_order": [
+      {
+        "blockers": [],
+        "depends_on": [],
+        "id": "design",
+        "ready_to_prepare": true,
+        "state": "planned",
+        "title": "准备外套与钥匙方案"
+      },
+      {
+        "blockers": [
+          "前置未完成：准备外套与钥匙方案"
+        ],
+        "depends_on": [
+          "design"
+        ],
+        "id": "stage",
+        "ready_to_prepare": false,
+        "state": "planned",
+        "title": "核对邮局走位与交钥匙动作"
+      },
+      {
+        "blockers": [
+          "前置未完成：核对邮局走位与交钥匙动作",
+          "前置未完成：准备外套与钥匙方案"
+        ],
+        "depends_on": [
+          "stage"
+        ],
+        "id": "video",
+        "ready_to_prepare": false,
+        "state": "planned",
+        "title": "准备两场的视听候选"
+      }
+    ],
+    "known_cost_minor": 15000,
+    "known_minutes": 90,
+    "note": "工时为单通道串行准备的声明估算；费用为分或cent，未知未补零。不是拍摄时长、真实报价、演员档期、付费授权或最优排期。",
+    "project_ref": {
+      "object_id": "ext_2c6a277e-7f44-423e-8254-922c66e94ea0",
+      "revision": 2,
+      "sha256": "4c9e397fcf307504f2e86fe4bc217fd5688dca0238340aca7c6c9cd27d212bb6"
+    },
+    "total_cost_minor": null,
+    "total_minutes": null,
+    "unassigned_tasks": [],
+    "unknown_cost": [
+      {
+        "id": "video",
+        "title": "准备两场的视听候选"
+      }
+    ],
+    "unknown_minutes": [
+      {
+        "id": "video",
+        "title": "准备两场的视听候选"
+      }
+    ]
+  },
+  "handoff": {
+    "basis_ref": {
+      "object_id": "ext_2c6a277e-7f44-423e-8254-922c66e94ea0",
+      "owner_plugin_id": "org.wordflowlab.production-planner",
+      "revision": 2,
+      "sha256": "4c9e397fcf307504f2e86fe4bc217fd5688dca0238340aca7c6c9cd27d212bb6"
+    },
+    "currency": "CNY",
+    "department": "stage",
+    "note": "根据固定场次与制作需求准备专业候选；回读目标插件Skill后执行。此交接不自动生成素材、支付、正式选用或定稿。",
+    "project_ref": {
+      "object_id": "ext_2c6a277e-7f44-423e-8254-922c66e94ea0",
+      "revision": 2,
+      "sha256": "4c9e397fcf307504f2e86fe4bc217fd5688dca0238340aca7c6c9cd27d212bb6"
+    },
+    "scenes": [
+      {
+        "requirements": [
+          {
+            "asset_source_indices": [],
+            "department": "prop",
+            "entity_ref": null,
+            "entity_source_index": null,
+            "id": "key",
+            "name": "旧站钥匙",
+            "notes": "铜色，第二场交给守站人。",
+            "quantity": 1,
+            "scene_notes": "与第一场同一把",
+            "state": "needed",
+            "unit": "把"
+          },
+          {
+            "asset_source_indices": [],
+            "department": "cast",
+            "entity_ref": null,
+            "entity_source_index": null,
+            "id": "keeper",
+            "name": "守站人",
+            "notes": "第二场接钥匙，需准备人物连续性。",
+            "quantity": 1,
+            "scene_notes": "接钥匙者",
+            "state": "needed",
+            "unit": "人"
+          },
+          {
+            "asset_source_indices": [],
+            "department": "prop",
+            "entity_ref": null,
+            "entity_source_index": null,
+            "id": "umbrella",
+            "name": "旧雨伞",
+            "notes": "第二场撑伞，核对持伞手与交钥匙动作。",
+            "quantity": 1,
+            "scene_notes": "固定原稿明确撑伞",
+            "state": "needed",
+            "unit": "把"
+          }
+        ],
+        "scene": {
+          "id": "harbour-2",
+          "order": 2,
+          "ranges": [
+            {
+              "byte_end": 176,
+              "byte_start": 98,
+              "quote": "EXT. 旧站门外 - DAWN\n\n守站人撑伞等候，林溪把钥匙交给他。\n",
+              "source_index": 0
+            }
+          ],
+          "setting": "exterior",
+          "synopsis": "黎明，守站人接过钥匙。",
+          "time_of_day": "DAWN",
+          "title": "EXT. 旧站门外 - DAWN"
+        }
+      }
+    ],
+    "source_refs": [
+      {
+        "kind": "resource",
+        "resource_id": "resource_862e90c1-9207-45e8-b7f1-342463e2989f",
+        "revision": 1,
+        "sha256": "da534f23352b84173cac80db9c6133fa33593399f5c633ce7c37e70e272164ac",
+        "work_ref": {
+          "kind": "novel",
+          "object_id": "novel_c070a2bc-10f4-4b55-a61b-981caa46f1ac",
+          "workspace_id": "workspace_01abb9b1-8e4a-46ac-a8ee-82d200f35875"
+        }
+      }
+    ],
+    "tasks": [
+      {
+        "blocked_reason": "",
+        "depends_on": [],
+        "estimated_cost_minor": 10000,
+        "estimated_minutes": 30,
+        "id": "design",
+        "requirement_ids": [
+          "coat",
+          "key"
+        ],
+        "scene_ids": [
+          "harbour-1"
+        ],
+        "state": "planned",
+        "title": "准备外套与钥匙方案"
+      },
+      {
+        "blocked_reason": "",
+        "depends_on": [
+          "design"
+        ],
+        "estimated_cost_minor": 5000,
+        "estimated_minutes": 60,
+        "id": "stage",
+        "requirement_ids": [
+          "key",
+          "umbrella",
+          "keeper"
+        ],
+        "scene_ids": [
+          "harbour-1",
+          "harbour-2"
+        ],
+        "state": "planned",
+        "title": "核对邮局走位与交钥匙动作"
+      },
+      {
+        "blocked_reason": "",
+        "depends_on": [
+          "stage"
+        ],
+        "estimated_cost_minor": null,
+        "estimated_minutes": null,
+        "id": "video",
+        "requirement_ids": [
+          "rain"
+        ],
+        "scene_ids": [
+          "harbour-1",
+          "harbour-2"
+        ],
+        "state": "planned",
+        "title": "准备两场的视听候选"
+      }
+    ]
+  },
+  "changes": [
+    "blocks",
+    "requirements",
+    "tasks",
+    "usages"
+  ],
+  "checks": [
+    "27个已有插件选择保持，新增本包即热发现",
+    "实际固定资料回读及来源引用",
+    "识别守站人与雨伞遗漏，补充需求和场次关联",
+    "容量50调整为75后无超容，未知估算仍null",
+    "原修订与原操作结果保持",
+    "完整HTML回读与下一次固定交接"
+  ],
+  "adopted": false,
+  "finalized": false,
+  "export": {
+    "sha256": "b888d03280ff4a096afae4978a7451cfa42d22b7218cea476dc3af070a5c2e33",
+    "bytes": 3164,
+    "chunks": 1,
+    "verified": true
+  },
+  "existing_plugin_choices_preserved": 27
+}

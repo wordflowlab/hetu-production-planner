@@ -9,7 +9,7 @@ def digest(p):
   if f.is_file():n=f.relative_to(p).as_posix().encode();b=f.read_bytes();h.update(struct.pack('>IQ',len(n),len(b))+n+b)
  return h.hexdigest()
 for peer in lock['peers']:
- dest=out/peer['slug'];dest.mkdir(exist_ok=True);name='org.wordflowlab.'+peer['slug']+'-'+peer['version']+'.tgz';archive=dest/name
+ dest=out/peer['slug']/peer['version'];dest.mkdir(parents=True,exist_ok=True);name='org.wordflowlab.'+peer['slug']+'-'+peer['version']+'.tgz';archive=dest/name
  if not archive.exists():subprocess.run(['gh','release','download','v'+peer['version'],'--repo','wordflowlab/hetu-'+peer['slug'],'--pattern',name,'--dir',str(dest)],check=True)
  assert hashlib.sha256(archive.read_bytes()).hexdigest()==peer['archive_sha256'],'同一版本归档已变化'
  package=dest/'package'

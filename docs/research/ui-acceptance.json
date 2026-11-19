@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-19",
+  "plugin_id": "org.wordflowlab.production-planner",
+  "package_sha256": "892e50ccb90398d5b67214bcb961c8dea70d335bf87b7b7112848cba0474540e",
+  "host_version": "hetu 0.12.4",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "tabs": [
+    "场次拆解",
+    "制作需求",
+    "准备计划",
+    "改稿与意见",
+    "专业交接"
+  ],
+  "empty_state": true,
+  "professional_actions": true,
+  "artifact_files": [
+    "制片筹备包.html"
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "widths": [
+    1360,
+    760
+  ],
+  "reduced_transparency": true,
+  "CAS_preserves_input": true,
+  "explicit_rebase": true,
+  "close_reopen": true,
+  "dirty_buffer_restore": true,
+  "page_errors": [],
+  "limits": [
+    "原生窗口材质、系统输入法及Windows/Linux未由本测试证明"
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "recorded_at": "2026-11-19",
+  "package_sha256": "892e50ccb90398d5b67214bcb961c8dea70d335bf87b7b7112848cba0474540e",
+  "scope": [
+    "五个专业页",
+    "light/dark",
+    "1360/760",
+    "键盘、CAS输入保留、显式rebase、返回重开、导出及取消",
+    "减少透明度"
+  ],
+  "assessment": {
+    "布局": {
+      "score": 9,
+      "basis": "五个任务页独立，专业结果保持主工作面；长计划正常纵向滚动，无横向溢出"
+    },
+    "间距与对齐": {
+      "score": 9,
+      "basis": "需求表、操作、依赖图和批次沿同一边缘组织，窄窗重排"
+    },
+    "排版": {
+      "score": 9,
+      "basis": "实际计算字号最多四档且不小于12px，中文标签不截断关键状态"
+    },
+    "颜色": {
+      "score": 9,
+      "basis": "共享Radix浅暗语义及连续渐变，未知与阻塞可读，减少透明度降级实色"
+    },
+    "控件状态": {
+      "score": 9,
+      "basis": "异步结果、空页、选场、导出取消、冲突与恢复均有实际断言"
+    },
+    "交互": {
+      "score": 9,
+      "basis": "固定版本查看、专业操作、键盘、CAS保留、导出及关闭重开完整旅程通过"
+    }
+  },
+  "judgment": "基于实际工作面和尺寸行为的设计判断，不是自动像素认证",
+  "files": [
+    {
+      "file": "dark-1360-view-0.png",
+      "sha256": "eace7660d0d9bc53604c8fbc093728f6497ea65e753c5975003bed2057805da4"
+    },
+    {
+      "file": "dark-1360-view-1.png",
+      "sha256": "6957d467da43329bd8e69d732c0b942de88a87863a521438204307aa6f585fdb"
+    },
+    {
+      "file": "dark-1360-view-2.png",
+      "sha256": "ea68fa5386822d8fea8fb1a7b11e1c8101d7e31f737be1bcef6649fc642b5034"
+    },
+    {
+      "file": "dark-1360-view-3.png",
+      "sha256": "46b1f6fcb0cc0fca454820273ab84aced2a4eef0389231c7ca62828619d49af9"
+    },
+    {
+      "file": "dark-1360-view-4.png",
+      "sha256": "ed0446438c0ce64e5d9e82152393d4f7805377cff014987b8ffa0bf495692cb3"
+    },
+    {
+      "file": "dark-760-view-0.png",
+      "sha256": "a54a2d3c5c588ca8641683415f0b12045afa136634f793a83edad116b47e4333"
+    },
+    {
+      "file": "dark-760-view-1.png",
+      "sha256": "510ca2a1573407c4e7517eb68d53f2accd4568c60a90faa54838b93b640f2681"
+    },
+    {
+      "file": "dark-760-view-2.png",
+      "sha256": "1d5e6d74dbe340df0e039c1cf488834f8cd95dbe30f1dac02ff47856532068c6"
+    },
+    {
+      "file": "dark-760-view-3.png",
+      "sha256": "ebfac168bd9cbcb126fc5929aed0ca81c2af5b43fce17b14ed3a0af69a06d4f2"
+    },
+    {
+      "file": "dark-760-view-4.png",
+      "sha256": "0e068e46e07fe983b588ea04d3d5d87dc0a7c795d729ffaa028aee45b545a3da"
+    },
+    {
+      "file": "light-1360-view-0.png",
+      "sha256": "fade4fd5efbfce5a87b0e5fc220fab26f942068d683e5fa335b56d2bafaa8c26"
+    },
+    {
+      "file": "light-1360-view-1.png",
+      "sha256": "b0c3e5dccdb212310ec74d1f9a97bf33bff5107d4aa8fc27898f61a6606dd200"
+    },
+    {
+      "file": "light-1360-view-2.png",
+      "sha256": "3496f329c983e7156fa42834472e60d4a0f6eed2791f26e9a4d850829d34d36b"
+    },
+    {
+      "file": "light-1360-view-3.png",
+      "sha256": "86034eb79047a15c11e79ad704fafc881acbcc91a5698ff4c5c7f70a503f7c40"
+    },
+    {
+      "file": "light-1360-view-4.png",
+      "sha256": "9ea8b6a65993afab578b77ff57602e3edf2d9a72283666d2c42cf51f21b275e8"
+    },
+    {
+      "file": "light-760-view-0.png",
+      "sha256": "99dd19e47fc463d0afea6e46c7c45923461335e8148fae143fe31d69a30c8b29"
+    },
+    {
+      "file": "light-760-view-1.png",
+      "sha256": "e74a6b954e9d5e7cd56f2e2843fe57938043332deec2109c2bc7195961467924"
+    },
+    {
+      "file": "light-760-view-2.png",
+      "sha256": "6d1d22ea077cc323b807e8adab289d3996c37ce5a65a11acb6543ee6ba3dc357"
+    },
+    {
+      "file": "light-760-view-3.png",
+      "sha256": "02c7b9297a1738ab82c55c19dc6f38961388cfba4a7373fff9f058acf9200380"
+    },
+    {
+      "file": "light-760-view-4.png",
+      "sha256": "1190fc1df0bda86229dfc5440e09b02972f4ba8af53d9bf7d1e440c4306189aa"
+    }
+  ]
+}

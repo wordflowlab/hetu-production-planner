@@ -10,10 +10,10 @@
     },
     {
       "slug": "director-stage",
-      "version": "0.2.0",
-      "package_sha256": "3a2c3cebd17854981fd40a95f3bd68558a33305444c4f2fcdca2c0bfcdb1fc66",
-      "archive_sha256": "7a6a8c8f45a3f8398adcf85cca9112e39ee3f9f7dc982d87b69c507c8b032aaa",
-      "source_commit": "03eab799a426dbc0883dd59c9c56ce5ee03affeb"
+      "version": "0.2.1",
+      "package_sha256": "bf0544d37b1bc9c67cd0a93fa0297a720e7a46fc73dcb21596885e62cac0a8c6",
+      "archive_sha256": "43153a24597604fb70391f907a324bfdf2a8fd97ff8c426e7b207610793f6737",
+      "source_commit": "23bfaaeeb97d360863e7ff1859556e722f515741"
     },
     {
       "slug": "video-studio",
